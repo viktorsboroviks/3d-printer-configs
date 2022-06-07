@@ -1,0 +1,88 @@
+accessControl:
+  enabled: false
+api:
+  key: 3A0928B5F7884FE681DB00ABA34DDC41
+controls:
+- children:
+  - command: M114
+    name: Get Position
+    regex: X:([-+]?[0-9.]+) Y:([-+]?[0-9.]+) Z:([-+]?[0-9.]+) E:([-+]?[0-9.]+)
+    template: 'Position: X={0}, Y={1}, Z={2}, E={3}'
+  name: Reporting
+- children:
+  - name: Load
+    script: load_filament.gco
+  - name: Unload
+    script: unload_filament.gco
+  name: Filament
+- children:
+  - name: STOP AND RUN TO SAFETY
+    script: emergency_reset.gco
+  - name: STOP MOTORS
+    script: stop_motors.gco
+  name: Emegency stop
+- children:
+  - name: XY go middle
+    script: go_xy_middle.gco
+  - name: Z go middle
+    script: go_z_middle.gco
+  name: Move
+plugins:
+  announcements:
+    _config_version: 1
+    channels:
+      _blog:
+        read_until: 1576506900
+      _important:
+        read_until: 1521111600
+      _octopi:
+        read_until: 1573722900
+      _plugins:
+        read_until: 1576627200
+      _releases:
+        read_until: 1576158300
+  discovery:
+    upnpUuid: e0cf04a6-9ae2-47d7-af90-40c2719bcd6b
+  errortracking:
+    unique_id: f3b76daf-8e92-497e-93b0-cc1e5c3d11bb
+  softwareupdate:
+    _config_version: 6
+    check_providers:
+      actioncommands: actioncommands
+  tracking:
+    enabled: false
+    unique_id: be381359-6a2f-4d8a-9021-aa29bf67fedc
+printerProfiles:
+  default: _default
+serial:
+  disconnectOnErrors: false
+  exclusive: false
+  maxCommunicationTimeouts:
+    idle: 0
+    long: 0
+    printing: 0
+  timeout:
+    communicationBusy: 5.0
+    connection: 20.0
+  useParityWorkaround: always
+  waitForStartOnConnect: true
+server:
+  firstRun: false
+  onlineCheck:
+    enabled: false
+  pluginBlacklist:
+    enabled: true
+  secretKey: S61EJwJD0HaRmFQGQm6pLZQNx2EyThFD
+  seenWizards:
+    corewizard: 3
+    tracking: null
+temperature:
+  profiles:
+  - bed: 100
+    chamber: null
+    extruder: 210
+    name: ABS
+  - bed: 60
+    chamber: null
+    extruder: 180
+    name: PLA
