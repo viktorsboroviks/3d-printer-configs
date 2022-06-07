@@ -1,6 +1,10 @@
-# RIX 3D printer
+# 3D printer configs
 
-Configurations, notes and other related files for RIX 3D printer (Hypercube Evolution, HEVO).
+Configurations, notes and other related files for the Hypercube Evolution 3D printer.
+
+## Firmware
+
+Marlin 2.0.4.4
 
 ## How to setup prusa-slicer
 
